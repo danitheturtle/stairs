@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://GameObjects/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GameObjects/Stairs.tscn" type="PackedScene" id=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 6, 2.25, 6 )
+
+[sub_resource type="CubeMesh" id=7]
+size = Vector3( 12, 4.5, 12 )
+
+[sub_resource type="SphereShape" id=5]
+radius = 2.0
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Floor" type="StaticBody" parent="."]
+transform = Transform( 20, 0, 0, 0, 0.1, 0, 0, 0, 20, 0, -5.64932, 0 )
+collision_layer = 4
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Floor"]
+transform = Transform( 1, 0, 0, 0, 1, -3.8147e-06, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.707107, -0.707107, 0, 0.353553, 0.353553, 0.866025, -0.612373, -0.612372, 0.5, 0, 15, 0 )
+
+[node name="RigidBody" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.15773, 7.08988 )
+collision_layer = 8
+collision_mask = 15
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="KinematicBody" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0 )
+collision_layer = 4
+collision/safe_margin = 0.04
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
+shape = SubResource( 6 )
+
+[node name="MeshInstance" type="MeshInstance" parent="KinematicBody"]
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="PivotWest" type="Spatial" parent="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+
+[node name="DetectorWest" type="Area" parent="KinematicBody/PivotWest"]
+collision_layer = 16
+collision_mask = 15
+
+[node name="CollisionSphere" type="CollisionShape" parent="KinematicBody/PivotWest/DetectorWest"]
+shape = SubResource( 5 )
+
+[node name="PivotEast" type="Spatial" parent="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+
+[node name="DetectorEast" type="Area" parent="KinematicBody/PivotEast"]
+collision_layer = 16
+collision_mask = 15
+
+[node name="CollisionSphere" type="CollisionShape" parent="KinematicBody/PivotEast/DetectorEast"]
+shape = SubResource( 5 )
+
+[node name="PivotNorth" type="Spatial" parent="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
+
+[node name="DetectorNorth" type="Area" parent="KinematicBody/PivotNorth"]
+collision_layer = 16
+collision_mask = 15
+
+[node name="CollisionSphere" type="CollisionShape" parent="KinematicBody/PivotNorth/DetectorNorth"]
+shape = SubResource( 5 )
+
+[node name="PivotSouth" type="Spatial" parent="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0 )
+
+[node name="DetectorSouth" type="Area" parent="KinematicBody/PivotSouth"]
+collision_layer = 16
+collision_mask = 15
+
+[node name="CollisionSphere" type="CollisionShape" parent="KinematicBody/PivotSouth/DetectorSouth"]
+shape = SubResource( 5 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0119419, 19.1278, 0.00154018 )
+
+[node name="StairsKinematicBody" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 19.5, -15 )
+
+[editable path="Player"]

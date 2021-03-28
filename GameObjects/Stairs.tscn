@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Meshes/Greybox/greyboxStairs.obj" type="ArrayMesh" id=1]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CapsuleShape" id=2]
+radius = 0.2
+height = 12.0
+
+[node name="StairsKinematicBody" type="KinematicBody"]
+collision_layer = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1.5, 0, 0, 0, 1.5, -3, 0, 0, 6, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+skeleton = NodePath("")
+material/0 = null
+
+[node name="Railing1" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, -0.5, 0, 0, 1, 1.5, 1.5, 0 )
+shape = SubResource( 2 )
+
+[node name="Railing2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, -0.5, 0, 0, 1, -1.5, 1.5, 0 )
+shape = SubResource( 2 )
+
+[node name="Railing3" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, -0.5, 0, 0, 1, -1.5, -1.5, 0 )
+shape = SubResource( 2 )
+
+[node name="Railing4" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, -0.5, 0, 0, 1, 1.5, -1.5, 0 )
+shape = SubResource( 2 )

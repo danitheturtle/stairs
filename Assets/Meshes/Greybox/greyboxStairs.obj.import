@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/greyboxStairs.obj-dde17f00ffac4bf6bb064fd30eb9dafd.mesh"
+
+[deps]
+
+files=[ "res://.import/greyboxStairs.obj-dde17f00ffac4bf6bb064fd30eb9dafd.mesh" ]
+
+source_file="res://Assets/Meshes/Greybox/greyboxStairs.obj"
+dest_files=[ "res://.import/greyboxStairs.obj-dde17f00ffac4bf6bb064fd30eb9dafd.mesh", "res://.import/greyboxStairs.obj-dde17f00ffac4bf6bb064fd30eb9dafd.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
